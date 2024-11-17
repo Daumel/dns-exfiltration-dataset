@@ -12,7 +12,7 @@ structure of the dataset:
 | 2019-04-29 07:57:43.810610_198.41.0.130_36304_198.41.0.10_53_18725   | 2019-04-29 07:57:43.810610 | 198.41.0.130  | 36304    | 198.41.0.10  | 53       | 0.00547  | 665         | 373             | 292           | 365.89933    | 121661.52665     | 292             | 373             | 332.5            | 40.5                           | 1640.25              | 0.1218                               | bba9012dfe6eb0362db5ae43cc103986d2d96b5c1d937c... | com                  | dnscat-txt.com          | 233                    | 60                        | ['b', 'b', 'a', '9', '0', '1', '2', 'd', 'f', ... | ['bb', 'ba', 'a9', '90', '01', '12', '2d', 'df... | ['bba', 'ba9', 'a90', '901', '012', '12d', '2d... | 0.549356             | {'9': 11, '6': 19, 'd': 14, 'm': 1, 'n': 1, '-... | 4.201555          | 7                          | 6                           | 4                             | 2                                | 0.462687               | 0.077253                    | 1                   | 60             | 60             | 60.0            | 60.0            | 60.0              | 0                  | [16]                     | [1]                       | Malicious |
 
 The dataset comprises 1,106,303 benign samples and 723,178 malicious samples. The malicious samples were generated using
-seven different DNS exfiltration tools, including iodine, dnsexfiltrator, cobaltstrike, and others.
+nine different DNS exfiltration tools, including iodine, dnsexfiltrator, cobaltstrike, and others.
 
 ## Assumptions regarding DNS exfiltration
 
