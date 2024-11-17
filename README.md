@@ -95,7 +95,7 @@ include:
 
 - Removing duplicate query-response pairs.
 - Removing incorrectly labeled query-response pairs.
-- Removing noisy heartbeat packets that have no exfiltration data in requests and commands in responses.
+- Removing noisy heartbeat packets that have no exfiltration data in requests and no commands in responses.
 - Removing query-response pairs where data was incorrectly extracted due to parsing errors by ALFlowLyzer (which appears
   to have limitations with SRV and MX record types).
 - Removing query-response pairs that exhibited erroneous or incomplete responses due to network or nameserver issues.
