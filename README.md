@@ -11,7 +11,7 @@ structure of the dataset:
 | 2023-08-05 09:03:40.862988_192.168.68.62_49517_192.168.68.1_53_11349 | 2023-08-05 09:03:40.862988 | 192.168.68.62 | 49517    | 192.168.68.1 | 53       | 0.38218  | 178         | 105             | 73            | 5.23314      | 465.74915        | 73              | 105             | 89.0             | 16.0                           | 256.0                | 0.17978                              | athomenet.com.                                    | com                  | athomenet.com           | 14                     | 0                         | ['a', 't', 'h', 'o', 'm', 'e', 'n', 'e', 't', ... | ['at', 'th', 'ho', 'om', 'me', 'en', 'ne', 'et... | ['ath', 'tho', 'hom', 'ome', 'men', 'ene', 'ne... | 0.0                  | {'o': 2, 'm': 2, 'c': 1, 'a': 1, 'n': 1, 't': ... | 3.093069          | 0                          | 9                           | 2                             | 1                                | 0.714286               | 0.642857                    | 1                   | 300            | 300            | 300.0           | 300.0           | 300.0             | 2                  | [1, 1]                   | [1, 1]                    | Benign    |
 | 2019-04-29 07:57:43.810610_198.41.0.130_36304_198.41.0.10_53_18725   | 2019-04-29 07:57:43.810610 | 198.41.0.130  | 36304    | 198.41.0.10  | 53       | 0.00547  | 665         | 373             | 292           | 365.89933    | 121661.52665     | 292             | 373             | 332.5            | 40.5                           | 1640.25              | 0.1218                               | bba9012dfe6eb0362db5ae43cc103986d2d96b5c1d937c... | com                  | dnscat-txt.com          | 233                    | 60                        | ['b', 'b', 'a', '9', '0', '1', '2', 'd', 'f', ... | ['bb', 'ba', 'a9', '90', '01', '12', '2d', 'df... | ['bba', 'ba9', 'a90', '901', '012', '12d', '2d... | 0.549356             | {'9': 11, '6': 19, 'd': 14, 'm': 1, 'n': 1, '-... | 4.201555          | 7                          | 6                           | 4                             | 2                                | 0.462687               | 0.077253                    | 1                   | 60             | 60             | 60.0            | 60.0            | 60.0              | 0                  | [16]                     | [1]                       | Malicious |
 
-The dataset comprises 1,032,087 benign samples and 723,178 malicious samples. The malicious samples were generated using
+The dataset comprises 1.060.359 benign samples and 724.059 malicious samples. The malicious samples were generated using
 nine different DNS exfiltration tools, including iodine, dnsexfiltrator, cobaltstrike, and others.
 
 ## Assumptions regarding DNS exfiltration
@@ -47,9 +47,9 @@ This dataset aims to address these challenges.
 
 This dataset is built upon PCAP files obtained from the following sources:
 
-- **[PCAP files by Singh et al.](https://data.mendeley.com/datasets/zh3wnddzxy/1), used in their
+- **[PCAP files by Singh et al.](https://ieee-dataport.org/documents/ti-2016-dns-dataset), used in their
   work, [Detecting bot-infected machines using DNS fingerprinting](https://www.sciencedirect.com/science/article/abs/pii/S174228761830272X?via%3Dihub):**  
-  Benign university traffic captured on a Monday between 7 a.m. and 7 p.m.
+  Benign university traffic captured on a Wednesday between 8 a.m. and 10 p.m. (DGA domains identified by the authors have been removed).
 
 - **[PCAP files by Gao et al.](https://github.com/ggyggy666/DNS-Tunnel-Datasets), used in their
   work, [GraphTunnel: Robust DNS Tunnel Detection Based on DNS Recursive Resolution Graph](https://ieeexplore.ieee.org/document/10636232):**  
@@ -81,11 +81,10 @@ determining the forward (source-to-destination) and backward (destination-to-sou
 for a DNS flow is the transaction ID in the DNS header. Consequently, if the same transaction ID is reused within a
 short timeframe, a single row may correspond to multiple query-response pairs.
 
-This scenario presents a challenge, as multiple query-response pairs with the same transaction ID within a short
+This scenario poses an issue, as multiple query-response pairs with the same transaction ID within a short
 timeframe typically occur by chance and are not logically related. This behavior also applies to DNS exfiltration
 malware,
-which, as
-previously noted, typically mimics legitimate traffic by generating separate queries with randomly chosen transaction
+which, as previously noted, typically mimics legitimate traffic by generating separate queries with randomly chosen transaction
 IDs.
 To address this, all rows containing DNS flows with more than one request and response were removed to ensure each row
 accurately represents a unique query-response interaction.
@@ -96,7 +95,7 @@ include:
 - Removing duplicate query-response pairs.
 - Removing incorrectly labeled query-response pairs.
 - Removing noisy heartbeat packets that have no exfiltration data in requests and no commands in responses.
-- Removing query-response pairs where data was incorrectly extracted due to parsing errors by ALFlowLyzer (which appears
+- Removing query-response pairs where data was incorrectly extracted due to parsing errors by ALFlowLyzer (The tool appears
   to have limitations with SRV and MX record types).
 - Removing query-response pairs that exhibited erroneous or incomplete responses due to network or nameserver issues.
 
